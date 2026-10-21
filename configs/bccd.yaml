@@ -1,0 +1,22 @@
+# Reference training config for YOLOv8 on BCCD.
+# These are the settings used for the reported results (see docs/RESULTS.md).
+model: yolov8n.pt
+data: data/bccd/data.yaml
+epochs: 50
+imgsz: 640
+batch: 16
+optimizer: auto
+cos_lr: true
+patience: 20
+seed: 42
+deterministic: true
+
+# Augmentation
+hsv_h: 0.015
+hsv_s: 0.5
+hsv_v: 0.4
+degrees: 5.0
+translate: 0.1
+scale: 0.5
+fliplr: 0.5
+mosaic: 1.0

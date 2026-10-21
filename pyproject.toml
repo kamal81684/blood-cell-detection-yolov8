@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bloodcell"
+version = "0.1.0"
+description = "Blood cell detection & counting with YOLOv8 and OpenCV preprocessing (BCCD dataset)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Kamal Kumari" }]
+keywords = ["yolo", "object-detection", "blood-cells", "bccd", "opencv", "medical-imaging"]
+dependencies = [
+    "ultralytics>=8.1.0",
+    "opencv-python-headless>=4.8.0",
+    "numpy>=1.24",
+    "PyYAML>=6.0",
+    "tqdm>=4.65",
+]
+
+[project.optional-dependencies]
+demo = ["streamlit>=1.30"]
+dev = ["pytest>=7.4", "matplotlib>=3.7", "pandas>=2.0"]
+
+[project.scripts]
+bloodcell-prepare = "bloodcell.prepare_data:main"
+bloodcell-train = "bloodcell.train:main"
+bloodcell-eval = "bloodcell.evaluate:main"
+bloodcell-predict = "bloodcell.predict:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
